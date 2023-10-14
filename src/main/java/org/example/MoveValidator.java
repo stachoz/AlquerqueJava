@@ -8,24 +8,22 @@ public class MoveValidator {
         this.boardSize = board.getSize();
     }
 
-    public boolean isMovePossible(int x1, int y1, int x2, int y2){
-        int xDiff = x2 - x1;
-        int yDiff = y2 - y1;
-        if(xDiff == 0 && yDiff == -2 && canMoveLeft(y1)) return true;
-        else if(xDiff == 0 && yDiff == 2 && canMoveRight(y1)) return true;
-        else if(xDiff == 2 && yDiff == 0 && canMoveDown(x1)) return true;
-        else if(xDiff == -2 && yDiff == 0 && canMoveUp(x1)) return true;
-        else if(xDiff == -2 && yDiff == -2 && canMoveUpperLeftBevel(x1, y1)) return true;
-        else if(xDiff == -2 && yDiff == 2 && canMoveUpperRightBevel(x1, y1)) return true;
-        else if(xDiff == 2 && yDiff == -2 && canMoveLowerLeftBevel(x1, y1)) return true;
-        else if(xDiff == 2 && yDiff == 2 && canMoveLowerRightBevel(x1, y1)) return true;
+    public boolean isMovePossible(int pawnX, int pawnY, int moveX, int moveY){
+        int xDiff = moveX - pawnX;
+        int yDiff = moveY - pawnY;
+        if(xDiff == 0 && yDiff == -2 && canMoveLeft(pawnY)) return true;
+        else if(xDiff == 0 && yDiff == 2 && canMoveRight(pawnY)) return true;
+        else if(xDiff == 2 && yDiff == 0 && canMoveDown(pawnX)) return true;
+        else if(xDiff == -2 && yDiff == 0 && canMoveUp(pawnX)) return true;
+        else if(xDiff == -2 && yDiff == -2 && canMoveUpperLeftBevel(pawnX, pawnY)) return true;
+        else if(xDiff == -2 && yDiff == 2 && canMoveUpperRightBevel(pawnX, pawnY)) return true;
+        else if(xDiff == 2 && yDiff == -2 && canMoveLowerLeftBevel(pawnX, pawnY)) return true;
+        else if(xDiff == 2 && yDiff == 2 && canMoveLowerRightBevel(pawnX, pawnY)) return true;
         return false;
     }
 
-    public boolean isCapturePossible(int x1, int y1, int x2, int y2){
-        int xDiff = x2 - x1;
-        int yDiff = y2 - y1;
-
+    public boolean isCapturePossible(int pawnX, int pawnY, int capturedX, int capturedY, int moveX, int moveY){
+        return (isMovePossible(pawnX, pawnY, capturedX, capturedY) && isMovePossible(capturedX, capturedY, moveX, moveY));
     }
     boolean canMoveUp(int xCoordinate) {
         return xCoordinate > 0;

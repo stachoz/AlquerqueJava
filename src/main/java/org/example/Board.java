@@ -40,6 +40,13 @@ public class Board {
         board[x2][y2] = pawn;
     }
 
+    public void capture(int pawnX, int pawnY, int capturedX, int capturedY, int moveX, int moveY){
+        char currentColor = board[pawnX][pawnY];
+        board[pawnX][pawnY] = EMPTY_FIELD;
+        board[capturedX][capturedY] = EMPTY_FIELD;
+        board[moveX][moveY] =  currentColor;
+    }
+
     public int getSize(){
         return board.length - 1;
     }

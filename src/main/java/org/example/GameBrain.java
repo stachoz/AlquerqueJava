@@ -16,11 +16,10 @@ public class GameBrain {
         Player currentPlayer = getCurrentTurnPlayer();
         printTurn(currentPlayer);
         char currentColor = currentPlayer.getColor().getValue();
-        // pawn coordinates
         System.out.println("enter pawn's coordinates which you want to move");
         int pawnX, pawnY;
         while(true){
-            pawnY= getY();
+            pawnY = getY();
             pawnX = getX();
             if(board.getBoardElement(pawnX, pawnY) == currentColor) break;
             else System.out.println("bad pawn coordinates");
@@ -30,16 +29,27 @@ public class GameBrain {
         int moveX, moveY;
         MoveValidator moveValidator = new MoveValidator(board);
         while(true){
+            // #TODO pre-move logic
             moveY = getY();
             moveX = getX();
-            if(detectMoveByDistance(pawnX, pawnY, moveX, moveY, BoardDistance.MOVE) && board.getBoardElement(moveX, moveY) == PawnColor.EMPTY.getValue()
-                    && moveValidator.isMovePossible(pawnX, pawnY, moveX, moveY)){
-                board.movePawn(pawnX, pawnY, moveX, moveY);
-                break;
+            if(board.getBoardElement(moveX, moveY) == PawnColor.EMPTY.getValue()) {
+                if(detectMoveByDistance(pawnX, pawnY, moveX, moveY, BoardDistance.MOVE) && moveValidator.isMovePossible(pawnX, pawnY, moveX, moveY)){
+                    board.movePawn(pawnX, pawnY, moveX, moveY);
+                    break;
+                }
+                else if(detectMoveByDistance(pawnX, pawnY, moveX, moveY, BoardDistance.CAPTURE)){
+                    int capturedX = capturedCoordinate(pawnX, moveX);
+                    int capturedY = capturedCoordinate(pawnY, moveY);
+                    char enemyColor = currentColor == PawnColor.BLACK.getValue() ? PawnColor.WHITE.getValue() : PawnColor.BLACK.getValue();
+                    if(moveValidator.isCapturePossible(pawnX, pawnY, capturedX, capturedY, moveX, moveY) && board.getBoardElement(capturedX, capturedY) == enemyColor){
+                        board.capture(pawnX, pawnY, capturedX, capturedY, moveX, moveY);
+                        break;
+                    }
+                }
             }
-            else if(detectMoveByDistance(pawnX, pawnY, moveX, moveY, BoardDistance.CAPTURE) && board.getBoardElement(moveX, moveY) == PawnColor.EMPTY.getValue())
             System.out.println("this move is illegal");
         }
+        moveCounter++;
     }
 
     private int getX(){
@@ -78,7 +88,8 @@ public class GameBrain {
         System.out.println("it " + p.getName() + " (" + p.getColor().getValue() + ") " + " turn ");
     }
 
-    private boolean checkFieldsToCapture(int x1, int y1, int x2, int y2){
-
+    private int capturedCoordinate(int pawnCo, int moveCo){
+        return pawnCo + ((moveCo - pawnCo) / 2);
     }
+
 }

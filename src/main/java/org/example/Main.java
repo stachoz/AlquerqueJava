@@ -6,8 +6,10 @@ public class Main {
         Player p2 = new Player("p2", PawnColor.BLACK);
         Board board = new Board();
         GameBrain gameBrain = new GameBrain(board, p1, p2);
-        board.printBoard();
-        gameBrain.makeMove();
-        board.printBoard();
+        while(true){
+            board.printBoard();
+            gameBrain.makeMove();
+            board.printBoard();
+        }
     }
 }
