@@ -7,6 +7,8 @@
     <list default="true" id="1be34b76-60c5-4ec2-b91e-d773dbca8a3c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameBrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameBrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MoveValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MoveValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +168,10 @@
       <workItem from="1697116183145" duration="99000" />
       <workItem from="1697286709589" duration="8289000" />
       <workItem from="1697318459114" duration="1381000" />
-      <workItem from="1697365066264" duration="963000" />
+      <workItem from="1697365066264" duration="1223000" />
+      <workItem from="1697366453688" duration="2298000" />
+      <workItem from="1697449201820" duration="1458000" />
+      <workItem from="1697480686817" duration="10736000" />
     </task>
     <servers />
   </component>
@@ -200,9 +205,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/MoveValidator.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="9" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/GameBrain.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

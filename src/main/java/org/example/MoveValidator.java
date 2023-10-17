@@ -8,7 +8,7 @@ public class MoveValidator {
         this.boardSize = board.getSize();
     }
 
-    public boolean isMovePossible(int pawnX, int pawnY, int moveX, int moveY){
+    public boolean isThisMovePossible(int pawnX, int pawnY, int moveX, int moveY){
         int xDiff = moveX - pawnX;
         int yDiff = moveY - pawnY;
         if(xDiff == 0 && yDiff == -2 && canMoveLeft(pawnY)) return true;
@@ -22,8 +22,8 @@ public class MoveValidator {
         return false;
     }
 
-    public boolean isCapturePossible(int pawnX, int pawnY, int capturedX, int capturedY, int moveX, int moveY){
-        return (isMovePossible(pawnX, pawnY, capturedX, capturedY) && isMovePossible(capturedX, capturedY, moveX, moveY));
+    public boolean isThisCapturePossible(int pawnX, int pawnY, int capturedX, int capturedY, int moveX, int moveY, char enemyColor){
+        return (board.getBoardElement(capturedX, capturedY) == enemyColor && isThisMovePossible(pawnX, pawnY, capturedX, capturedY) && isThisMovePossible(capturedX, capturedY, moveX, moveY));
     }
     boolean canMoveUp(int xCoordinate) {
         return xCoordinate > 0;
