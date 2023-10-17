@@ -1,14 +1,15 @@
 package org.example;
 
 public class MoveValidator {
-    private Board board;
-    private int boardSize;
+    private final Board board;
+    private final int boardSize;
     public MoveValidator(Board board) {
         this.board = board;
         this.boardSize = board.getSize();
     }
 
     public boolean isThisMovePossible(int pawnX, int pawnY, int moveX, int moveY){
+        if (!(areCoordinatesInBoardRange(pawnX, pawnY) && areCoordinatesInBoardRange(moveX, moveY))) return false;
         int xDiff = moveX - pawnX;
         int yDiff = moveY - pawnY;
         if(xDiff == 0 && yDiff == -2 && canMoveLeft(pawnY)) return true;
@@ -18,11 +19,11 @@ public class MoveValidator {
         else if(xDiff == -2 && yDiff == -2 && canMoveUpperLeftBevel(pawnX, pawnY)) return true;
         else if(xDiff == -2 && yDiff == 2 && canMoveUpperRightBevel(pawnX, pawnY)) return true;
         else if(xDiff == 2 && yDiff == -2 && canMoveLowerLeftBevel(pawnX, pawnY)) return true;
-        else if(xDiff == 2 && yDiff == 2 && canMoveLowerRightBevel(pawnX, pawnY)) return true;
-        return false;
+        else return xDiff == 2 && yDiff == 2 && canMoveLowerRightBevel(pawnX, pawnY);
     }
 
     public boolean isThisCapturePossible(int pawnX, int pawnY, int capturedX, int capturedY, int moveX, int moveY, char enemyColor){
+        if (!(areCoordinatesInBoardRange(pawnX, pawnY) && areCoordinatesInBoardRange(moveX, moveY))) return false;
         return (board.getBoardElement(capturedX, capturedY) == enemyColor && isThisMovePossible(pawnX, pawnY, capturedX, capturedY) && isThisMovePossible(capturedX, capturedY, moveX, moveY));
     }
     boolean canMoveUp(int xCoordinate) {
@@ -56,4 +57,9 @@ public class MoveValidator {
     boolean canMoveLowerRightBevel(int x, int y){
         return (x <= boardSize - 2 && y <= boardSize - 2 && board.getBoardElement(x + 1, y + 1) == '\\');
     }
+
+    boolean areCoordinatesInBoardRange(int x, int y){
+        return x <= boardSize && y <= boardSize && x >= 0 && y >= 0;
+    }
+
 }

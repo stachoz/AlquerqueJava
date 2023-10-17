@@ -29,7 +29,7 @@ public class GameBrain {
         while(true){
             pawnY = getY();
             pawnX = getX();
-            if(board.getBoardElement(pawnX, pawnY) == currentColor) break;
+            if(board.getBoardElement(pawnX, pawnY) == currentColor && canPawnMove(pawnX, pawnY, currentColor, BoardDistance.MOVE) || canPawnMove(pawnX, pawnY, currentColor, BoardDistance.CAPTURE)) break;
             else System.out.println("bad pawn coordinates");
         }
         // move coordinates
@@ -49,7 +49,7 @@ public class GameBrain {
                     int capturedX = capturedCoordinate(pawnX, moveX);
                     int capturedY = capturedCoordinate(pawnY, moveY);
                     char enemyColor = enemyColor(currentColor);
-                    if(canCapture(pawnX, pawnY, capturedX, capturedY,moveX, moveY, enemyColor)){
+                    if(moveValidator.isThisCapturePossible(pawnX, pawnY, capturedX, capturedY,moveX, moveY, enemyColor)){
                         board.capture(pawnX, pawnY, capturedX, capturedY, moveX, moveY);
                         break;
                     }
@@ -103,19 +103,21 @@ public class GameBrain {
     private int capturedCoordinate(int pawnCo, int moveCo){
         return pawnCo + ((moveCo - pawnCo) / 2);
     }
-
-    private boolean canCapture(int x, int y, char currentColor) {
-        int distance = BoardDistance.CAPTURE.getValue();
-        int directions[] = {-distance, 0, distance};
-        for(int directionX : directions) {
-            for(int directionY : directions) {
-                if (directionX == 0 && directionY == 0) continue;
+    private boolean canPawnMove(int x, int y, char currentColor, BoardDistance boardDistanceMoveType){
+        int distance = boardDistanceMoveType.getValue();
+        int[] directions = {-distance, 0, distance};
+        for(int directionX : directions){
+            for(int directionY : directions){
+                if(directionX == 0 && directionY == 0) continue;
                 int moveX = x + directionX;
                 int moveY = y + directionY;
-                int capturedX = capturedCoordinate(x, moveX);
-                int capturedY = capturedCoordinate(y, moveY);
-                char enemyColor = enemyColor(currentColor);
-                if(moveValidator.isThisCapturePossible(x, y, capturedX, capturedY, moveX, moveY, enemyColor)) return true;
+                if(boardDistanceMoveType == BoardDistance.MOVE && moveValidator.isThisMovePossible(x, y, moveX, moveY) && board.getBoardElement(moveX, moveY) == PawnColor.EMPTY.getValue()) return true;
+                else if(boardDistanceMoveType == BoardDistance.CAPTURE){
+                    int capturedX = capturedCoordinate(x, moveX);
+                    int capturedY = capturedCoordinate(y, moveY);
+                    char enemyColor = enemyColor(currentColor);
+                    if(moveValidator.isThisCapturePossible(x, y, capturedX, capturedY, moveX, moveY, enemyColor)) return true;
+                }
             }
         }
         return false;
@@ -125,7 +127,7 @@ public class GameBrain {
         int size = board.getSize();
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
-                if(board.getBoardElement(i, j) == currentColor && canCapture(i, j, currentColor)) pawnAbleToCapture.put(i, j);
+                if(board.getBoardElement(i, j) == currentColor && canPawnMove(i, j, currentColor, BoardDistance.CAPTURE)) pawnAbleToCapture.put(i, j);
             }
         }
     }

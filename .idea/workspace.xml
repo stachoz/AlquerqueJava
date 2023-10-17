@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1be34b76-60c5-4ec2-b91e-d773dbca8a3c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameBrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameBrain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MoveValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MoveValidator.java" afterDir="false" />
@@ -171,7 +170,7 @@
       <workItem from="1697365066264" duration="1223000" />
       <workItem from="1697366453688" duration="2298000" />
       <workItem from="1697449201820" duration="1458000" />
-      <workItem from="1697480686817" duration="10736000" />
+      <workItem from="1697480686817" duration="15947000" />
     </task>
     <servers />
   </component>
@@ -204,11 +203,10 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/GameBrain.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
