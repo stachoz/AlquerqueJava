@@ -1,10 +1,10 @@
 package org.example;
 
 public class Board {
-    static private char EMPTY_FIELD = 'X';
-    static private char WHITE_PAWN = 'W';
-    static private char BLACK_PAWN = 'B';
-    static private char board[][] = {
+    static private final char EMPTY_FIELD = PawnColor.EMPTY.getValue();
+    static private final char WHITE_PAWN = PawnColor.WHITE.getValue();
+    static private final char BLACK_PAWN = PawnColor.BLACK.getValue();
+    static private final char[][] board = {
             // 1                    2              3                 4                 5
             {BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN},
             {'|', '\\', '|', '/', '|', '\\', '|', '/', '|'},
@@ -17,7 +17,7 @@ public class Board {
             {WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN},
     };
     public void printBoard(){
-        System.out.printf("\n");
+        System.out.print("\n");
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board.length; j++){
                 System.out.printf("%c", board[i][j]);
@@ -25,13 +25,13 @@ public class Board {
             if (i % 2 == 0) {
                 System.out.printf(" %d", i / 2);
             }
-            System.out.printf("\n");
+            System.out.print("\n");
         }
         char c = 'a';
         for(int i = 0; i < (board.length + 1) / 2; i++){
             System.out.printf("%c ", c++);
         }
-        System.out.printf("\n");
+        System.out.print("\n");
     }
 
     public void movePawn(int x1, int y1, int x2, int y2){
@@ -51,8 +51,16 @@ public class Board {
         return board.length - 1;
     }
 
+    public int getLength() {
+        return board.length;
+    }
+
     public char getBoardElement(int x, int y){
         return board[x][y];
+    }
+
+    public void takeOffPawn(int x, int y){
+        board[x][y] = EMPTY_FIELD;
     }
 
 }

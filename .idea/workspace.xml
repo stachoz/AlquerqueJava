@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1be34b76-60c5-4ec2-b91e-d773dbca8a3c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/PawnsAbleToCapture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameBrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameBrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MoveValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MoveValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ScannerUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ScannerUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +21,7 @@
       <list>
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -170,7 +173,12 @@
       <workItem from="1697365066264" duration="1223000" />
       <workItem from="1697366453688" duration="2298000" />
       <workItem from="1697449201820" duration="1458000" />
-      <workItem from="1697480686817" duration="15947000" />
+      <workItem from="1697480686817" duration="16908000" />
+      <workItem from="1697571291876" duration="10000" />
+      <workItem from="1697622451866" duration="8503000" />
+      <workItem from="1697708290528" duration="273000" />
+      <workItem from="1697805894883" duration="3506000" />
+      <workItem from="1697826063820" duration="3129000" />
     </task>
     <servers />
   </component>
@@ -207,6 +215,11 @@
           <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="2" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/GameBrain.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

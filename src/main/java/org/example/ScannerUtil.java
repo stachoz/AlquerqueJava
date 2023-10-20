@@ -5,23 +5,23 @@ import java.util.Scanner;
 public class ScannerUtil {
     static Scanner input = new Scanner(System.in);
 
-    public static int get_natural_num() {
+    public static int getNaturalNumber() {
         while(true){
-            String i = input_1_length();
-            if(is_numeric(i)) return Integer.parseInt(i);
+            String i = input1Length();
+            if(isNumeric(i)) return Integer.parseInt(i);
             else System.out.println("Bad input, again");
         }
     }
 
-    public static char get_char() {
+    public static char getChar() {
         while(true){
-            String i = input_1_length();
-            if(!is_numeric(i)) return i.charAt(0);
+            String i = input1Length();
+            if(!isNumeric(i)) return i.charAt(0);
             else System.out.println("Bad input, enter again");
         }
     }
 
-    private static String input_1_length(){
+    private static String input1Length(){
         String i;
         while(true){
             i = input.nextLine();
@@ -32,7 +32,7 @@ public class ScannerUtil {
             }
         }
     }
-    private static boolean is_numeric(String s){
+    private static boolean isNumeric(String s){
         try{
             Integer.parseInt(s);
             return true;
