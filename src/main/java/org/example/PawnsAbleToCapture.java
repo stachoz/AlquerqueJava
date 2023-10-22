@@ -19,7 +19,7 @@ public class PawnsAbleToCapture {
         tab[x][y] = state ? 1 : 0;
     }
     public boolean isPawnAbleToCapture(int x, int y){
-        return tab[x][y] == 1;
+        return tab[x][y] == 1 ? true : false;
     }
 
     public void resetBoard(){

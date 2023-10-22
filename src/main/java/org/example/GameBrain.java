@@ -30,12 +30,16 @@ public class GameBrain {
             char answer = ScannerUtil.getChar();
             if(answer == 'y'){
                 System.out.println("enter pawn's coordinates which you want to take off");
-                int pawnX, pawnY;
+                int pawnX, pawnY, convertedX, convertedY;
                 do {
                     pawnY = getY();
                     pawnX = getX();
-                } while (!pawnsAbleToCapture.isPawnAbleToCapture(pawnX, pawnY));
+                    convertedX = convertToOnlyPawnsCoordinates(pawnX);
+                    convertedY = convertToOnlyPawnsCoordinates(pawnY);
+                } while (!pawnsAbleToCapture.isPawnAbleToCapture(convertedX, convertedY));
                 board.takeOffPawn(pawnX, pawnY);
+                board.printBoard();
+                pawnsAbleToCapture.resetBoard();
             }
         }
         // It is looking for pawns which could make a capture in the next turn.
@@ -137,8 +141,16 @@ public class GameBrain {
         int size = board.getSize();
         for(int i = 0; i <= size; i+=2){
             for(int j = 0; j <= size; j+=2){
-                if(board.getBoardElement(i, j) == currentColor && canPawnMove(i, j, currentColor, BoardDistance.CAPTURE)) pawnsAbleToCapture.setPawnAbleToCapture(true, i / 2, j / 2);
+                if(board.getBoardElement(i, j) == currentColor && canPawnMove(i, j, currentColor, BoardDistance.CAPTURE)){
+                    int x = convertToOnlyPawnsCoordinates(i);
+                    int y = convertToOnlyPawnsCoordinates(j);
+                    pawnsAbleToCapture.setPawnAbleToCapture(true, x, y);
+                }
             }
         }
+    }
+
+    private int convertToOnlyPawnsCoordinates(int co){
+        return co / 2;
     }
 }

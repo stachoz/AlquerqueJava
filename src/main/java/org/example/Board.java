@@ -5,7 +5,6 @@ public class Board {
     static private final char WHITE_PAWN = PawnColor.WHITE.getValue();
     static private final char BLACK_PAWN = PawnColor.BLACK.getValue();
     static private final char[][] board = {
-            // 1                    2              3                 4                 5
             {BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN},
             {'|', '\\', '|', '/', '|', '\\', '|', '/', '|'},
             {BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN},
