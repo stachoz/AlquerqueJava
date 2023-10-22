@@ -8,8 +8,9 @@ public class MoveValidator {
         this.boardSize = board.getSize();
     }
 
-    public boolean isThisMovePossible(int pawnX, int pawnY, int moveX, int moveY){
-        if (!(areCoordinatesInBoardRange(pawnX, pawnY) && areCoordinatesInBoardRange(moveX, moveY))) return false;
+    public boolean isThisMovePossible(int pawnX, int pawnY, int moveX, int moveY, char emptyFieldColor){
+        if(!(areCoordinatesInBoardRange(pawnX, pawnY) && areCoordinatesInBoardRange(moveX, moveY))) return false;
+        if(board.getBoardElement(moveX, moveY) != emptyFieldColor) return false;
         int xDiff = moveX - pawnX;
         int yDiff = moveY - pawnY;
         if(xDiff == 0 && yDiff == -2 && canMoveLeft(pawnY)) return true;
@@ -22,9 +23,11 @@ public class MoveValidator {
         else return xDiff == 2 && yDiff == 2 && canMoveLowerRightBevel(pawnX, pawnY);
     }
 
-    public boolean isThisCapturePossible(int pawnX, int pawnY, int capturedX, int capturedY, int moveX, int moveY, char enemyColor){
+    public boolean isThisCapturePossible(int pawnX, int pawnY, int capturedX, int capturedY, int moveX, int moveY, char enemyColor, char emptyFieldColor){
         if (!(areCoordinatesInBoardRange(pawnX, pawnY) && areCoordinatesInBoardRange(moveX, moveY))) return false;
-        return (board.getBoardElement(capturedX, capturedY) == enemyColor && isThisMovePossible(pawnX, pawnY, capturedX, capturedY) && isThisMovePossible(capturedX, capturedY, moveX, moveY));
+        return (isThisMovePossible(pawnX, pawnY, capturedX, capturedY, enemyColor) && isThisMovePossible(capturedX, capturedY, moveX, moveY, emptyFieldColor)
+                && board.getBoardElement(moveX, moveY) == PawnColor.EMPTY.getValue()
+        );
     }
     boolean canMoveUp(int xCoordinate) {
         return xCoordinate > 0;

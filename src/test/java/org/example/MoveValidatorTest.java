@@ -13,7 +13,7 @@ class MoveValidatorTest {
     @BeforeEach
     void setUp() {
         board = new Board();
-        moveValidator = new MoveValidator(board);
+        moveValidator = new MoveValidator(board, emptyFieldColor);
     }
 
     @Test

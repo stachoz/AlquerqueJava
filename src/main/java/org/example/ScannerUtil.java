@@ -25,7 +25,7 @@ public class ScannerUtil {
         String i;
         while(true){
             i = input.nextLine();
-            if(i.length() > 1){
+            if(i.length() > 1 || i.length() == 0){
                 System.out.println("Bad input, enter again");
             } else{
                 return i;
