@@ -1,4 +1,4 @@
-package org.example;
+package org.example.game;
 
 public class PawnsAbleToCapture {
     private final int size;

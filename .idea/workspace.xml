@@ -5,10 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1be34b76-60c5-4ec2-b91e-d773dbca8a3c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/game/GameMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameBrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameBrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ScannerUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ScannerUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/game/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BoardDistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/enums/BoardDistance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameBrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/game/GameBrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MoveValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/validators/MoveValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PawnColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/enums/PawnColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PawnsAbleToCapture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/game/PawnsAbleToCapture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/game/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ScannerUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/utils/ScannerUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/MoveValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/MoveValidatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +68,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\stasi\IdeaProjects\Projects\AlquerqueGame\src\main\java\org\example" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.example" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="org.example" />
     </key>
@@ -72,7 +84,7 @@
       <module name="AlquerqueGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.enums.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -84,7 +96,7 @@
       <module name="AlquerqueGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.enums.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -99,7 +111,7 @@
       <module name="AlquerqueGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.enums.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,7 +127,7 @@
       <module name="AlquerqueGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.enums.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,7 +143,7 @@
       <module name="AlquerqueGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.enums.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -179,7 +191,8 @@
       <workItem from="1697805894883" duration="3506000" />
       <workItem from="1697826063820" duration="19273000" />
       <workItem from="1698046061215" duration="677000" />
-      <workItem from="1698053888472" duration="1319000" />
+      <workItem from="1698053888472" duration="2188000" />
+      <workItem from="1698088364471" duration="4074000" />
     </task>
     <servers />
   </component>
@@ -217,14 +230,9 @@
           <option name="timeStamp" value="2" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/GameBrain.java</url>
-          <line>26</line>
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/game/GameBrain.java</url>
+          <line>31</line>
           <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/GameBrain.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,4 +1,9 @@
-package org.example;
+package org.example.game;
+
+import org.example.enums.BoardDistance;
+import org.example.enums.PawnColor;
+import org.example.utils.ScannerUtil;
+import org.example.validators.MoveValidator;
 
 public class GameBrain {
     private final Board board;

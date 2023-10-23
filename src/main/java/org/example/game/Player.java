@@ -1,4 +1,6 @@
-package org.example;
+package org.example.game;
+
+import org.example.enums.PawnColor;
 
 public class Player {
     private final String name;

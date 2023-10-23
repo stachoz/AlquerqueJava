@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.game.Board;
+import org.example.validators.MoveValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

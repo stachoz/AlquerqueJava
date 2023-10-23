@@ -1,4 +1,6 @@
-package org.example;
+package org.example.game;
+
+import org.example.enums.PawnColor;
 
 public class Board {
     static private final char EMPTY_FIELD = PawnColor.EMPTY.getValue();

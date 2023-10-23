@@ -1,4 +1,4 @@
-package org.example;
+package org.example.enums;
 
 public enum PawnColor {
     BLACK('B'), WHITE('W'), EMPTY('X');

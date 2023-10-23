@@ -1,4 +1,7 @@
-package org.example;
+package org.example.validators;
+
+import org.example.game.Board;
+import org.example.enums.PawnColor;
 
 public class MoveValidator {
     private final Board board;
@@ -29,39 +32,39 @@ public class MoveValidator {
                 && board.getBoardElement(moveX, moveY) == PawnColor.EMPTY.getValue()
         );
     }
-    boolean canMoveUp(int xCoordinate) {
+    public boolean canMoveUp(int xCoordinate) {
         return xCoordinate > 0;
     }
 
-    boolean canMoveDown(int xCoordinate){
+    public boolean canMoveDown(int xCoordinate){
         return xCoordinate < boardSize;
     }
 
-    boolean canMoveLeft(int yCoordinate){
+    public boolean canMoveLeft(int yCoordinate){
         return yCoordinate > 0;
     }
 
-    boolean canMoveRight(int yCoordinate){
+    public boolean canMoveRight(int yCoordinate){
         return yCoordinate < board.getSize();
     }
 
-    boolean canMoveUpperLeftBevel(int x1, int y1){
+    public boolean canMoveUpperLeftBevel(int x1, int y1){
         return (x1 >= 2 && y1 >= 2 && board.getBoardElement(x1 - 1, y1 - 1) == '\\');
     }
 
-    boolean canMoveUpperRightBevel(int x, int y){
+    public boolean canMoveUpperRightBevel(int x, int y){
         return (x >= 2 && y <= boardSize - 2 && board.getBoardElement(x - 1, y + 1) == '/');
     }
 
-    boolean canMoveLowerLeftBevel(int x, int y){
+    public boolean canMoveLowerLeftBevel(int x, int y){
         return (x <= boardSize - 2 && y >= 2 && board.getBoardElement(x + 1, y - 1) == '/');
     }
 
-    boolean canMoveLowerRightBevel(int x, int y){
+    public boolean canMoveLowerRightBevel(int x, int y){
         return (x <= boardSize - 2 && y <= boardSize - 2 && board.getBoardElement(x + 1, y + 1) == '\\');
     }
 
-    boolean areCoordinatesInBoardRange(int x, int y){
+    public boolean areCoordinatesInBoardRange(int x, int y){
         return x <= boardSize && y <= boardSize && x >= 0 && y >= 0;
     }
 
