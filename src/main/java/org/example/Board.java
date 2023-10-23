@@ -4,14 +4,26 @@ public class Board {
     static private final char EMPTY_FIELD = PawnColor.EMPTY.getValue();
     static private final char WHITE_PAWN = PawnColor.WHITE.getValue();
     static private final char BLACK_PAWN = PawnColor.BLACK.getValue();
+//    static private final char[][] board = {
+//            {BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN},
+//            {'|', '\\', '|', '/', '|', '\\', '|', '/', '|'},
+//            {BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN},
+//            {'|', '/', '|', '\\', '|', '/', '|', '\\', '|'},
+//            {WHITE_PAWN, '-', WHITE_PAWN, '-', EMPTY_FIELD, '-', BLACK_PAWN, '-', BLACK_PAWN},
+//            {'|', '\\', '|', '/', '|', '\\', '|', '/', '|'},
+//            {WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN},
+//            {'|', '/', '|', '\\', '|', '/', '|', '\\', '|'},
+//            {WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN},
+//    };
+
     static private final char[][] board = {
-            {BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN},
+            {BLACK_PAWN, '-', BLACK_PAWN, '-', EMPTY_FIELD, '-', BLACK_PAWN, '-', BLACK_PAWN},
             {'|', '\\', '|', '/', '|', '\\', '|', '/', '|'},
             {BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN, '-', BLACK_PAWN},
             {'|', '/', '|', '\\', '|', '/', '|', '\\', '|'},
             {WHITE_PAWN, '-', WHITE_PAWN, '-', EMPTY_FIELD, '-', BLACK_PAWN, '-', BLACK_PAWN},
             {'|', '\\', '|', '/', '|', '\\', '|', '/', '|'},
-            {WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN},
+            {WHITE_PAWN, '-', WHITE_PAWN, '-', BLACK_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN},
             {'|', '/', '|', '\\', '|', '/', '|', '\\', '|'},
             {WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN, '-', WHITE_PAWN},
     };

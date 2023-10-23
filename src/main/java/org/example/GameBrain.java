@@ -23,10 +23,10 @@ public class GameBrain {
         printTurn(currentPlayer);
         char currentColor = currentPlayer.getColor().getValue();
         char enemyColor = enemyColor(currentColor);
-        // hasCaptured and pawnAbletoCapture contain from previous turn
+        // hasCaptured and pawnAbleToCapture contain from previous turn
         if(!hasCaptured && pawnsAbleToCapture.hasAnyPawn()){
             System.out.println("Enemy Player (" + enemyColor + ") missed capture!");
-            System.out.println("Do you want to take off his pawn?");
+            System.out.println("Do you want to take off his pawn? (y/n)");
             char answer = ScannerUtil.getChar();
             if(answer == 'y'){
                 System.out.println("enter pawn's coordinates which you want to take off");
@@ -53,12 +53,12 @@ public class GameBrain {
             if(board.getBoardElement(pawnX, pawnY) == currentColor && canPawnMove(pawnX, pawnY, currentColor, BoardDistance.MOVE) || canPawnMove(pawnX, pawnY, currentColor, BoardDistance.CAPTURE)) break;
             else System.out.println("bad pawn coordinates");
         }
-        // move coordinates
-        System.out.println("enter coordinates where you want to move");
+        boolean multiCapture = false;
         while(true){
+            System.out.println("enter coordinates where you want to move");
             int moveY = getY();
             int moveX = getX();
-            if(detectMoveByDistance(pawnX, pawnY, moveX, moveY, BoardDistance.MOVE) && moveValidator.isThisMovePossible(pawnX, pawnY, moveX, moveY, PawnColor.EMPTY.getValue())){
+            if(!multiCapture && detectMoveByDistance(pawnX, pawnY, moveX, moveY, BoardDistance.MOVE) && moveValidator.isThisMovePossible(pawnX, pawnY, moveX, moveY, PawnColor.EMPTY.getValue())){
                 board.movePawn(pawnX, pawnY, moveX, moveY);
                 hasCaptured = false;
                 break;
@@ -69,7 +69,19 @@ public class GameBrain {
                 if(moveValidator.isThisCapturePossible(pawnX, pawnY, capturedX, capturedY,moveX, moveY, enemyColor, PawnColor.EMPTY.getValue())){
                     board.capture(pawnX, pawnY, capturedX, capturedY, moveX, moveY);
                     hasCaptured = true;
-                    break;
+                    // is multi-capture possible?
+                    if(canPawnMove(moveX, moveY, currentColor, BoardDistance.CAPTURE)) {
+                        System.out.println("Next capture? (y/n)");
+                        char answer = ScannerUtil.getChar();
+                        if (answer == 'y') {
+                            pawnX = moveX;
+                            pawnY = moveY;
+                            multiCapture = true;
+                            board.printBoard();
+                            continue;
+                        }
+                        else break;
+                    } else break;
                 }
             }
             System.out.println("this move is illegal");
