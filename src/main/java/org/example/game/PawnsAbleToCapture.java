@@ -13,14 +13,30 @@ public class PawnsAbleToCapture {
         pawns.add(p);
     }
 
-    public boolean isPawnAbleToCapture(Pawn pawn){
+    public boolean isPawnAbleToCapture(int x, int y){
         for(Pawn p : pawns){
-            if(pawn.getX() == p.getX() && pawn.getY() == p.getY()) return true;
+            if(p.getX() == x && p.getY() == y) return true;
         }
         return false;
     }
 
     public void reset() {
         pawns = new ArrayList<>();
+    }
+
+    public void print() {
+        for(Pawn p : pawns){
+            System.out.println("(" + p.getX() + "," + p.getY() + ")");
+        }
+    }
+
+    public void updatePawn(int oldX, int oldY, int newX, int newY){
+        for(Pawn p : pawns){
+            if(p.getX() == oldX && p.getY() == oldY){
+                p.setX(newX);
+                p.setY(newY);
+                break;
+            }
+        }
     }
 }

@@ -5,6 +5,8 @@ import org.example.enums.PawnColor;
 import org.example.utils.ScannerUtil;
 import org.example.validators.MoveValidator;
 
+import javax.sound.midi.Soundbank;
+
 public class GameBrain {
     protected static Board board;
     private final Player p1;
@@ -34,11 +36,12 @@ public class GameBrain {
             char answer = ScannerUtil.getChar();
             if(answer == 'y'){
                 System.out.println("enter pawn's coordinates which you want to take off");
-                int pawnX, pawnY, convertedX, convertedY;
+                pawnsAbleToCapture.print();
+                int pawnX, pawnY;
                 do {
                     pawnY = getY();
                     pawnX = getX();
-                } while (!pawnsAbleToCapture.isPawnAbleToCapture(new Pawn(pawnX, pawnY)));
+                } while (!pawnsAbleToCapture.isPawnAbleToCapture(pawnX, pawnY));
                 board.takeOffPawn(pawnX, pawnY);
                 board.printBoard();
                 pawnsAbleToCapture.reset();
@@ -62,6 +65,9 @@ public class GameBrain {
             int moveX = getX();
             if(!multiCapture && detectMoveByDistance(pawnX, pawnY, moveX, moveY, BoardDistance.MOVE) && moveValidator.isThisMovePossible(pawnX, pawnY, moveX, moveY, PawnColor.EMPTY.getValue())){
                 board.movePawn(pawnX, pawnY, moveX, moveY);
+                if(pawnsAbleToCapture.isPawnAbleToCapture(pawnX, pawnY)){
+                    pawnsAbleToCapture.updatePawn(pawnX, pawnY, moveX, moveY);
+                }
                 hasCaptured = false;
                 break;
             }
