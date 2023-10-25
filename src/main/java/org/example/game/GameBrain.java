@@ -25,7 +25,6 @@ public class GameBrain {
 
     public void makeMove(){
         Player currentPlayer = getCurrentTurnPlayer();
-        printTurn(currentPlayer);
         char currentColor = currentPlayer.getColor().getValue();
         char enemyColor = enemyColor(currentColor);
         // hasCaptured and pawnAbleToCapture contain from previous turn
@@ -128,7 +127,8 @@ public class GameBrain {
         int yDiff = Math.abs(y1 - y2);
         return xDiff == distance && yDiff == 0 || xDiff == 0 && yDiff == distance || xDiff == distance && yDiff == distance;
     }
-    private void printTurn(Player p){
+    public void printTurn(){
+        Player p = getCurrentTurnPlayer();
         System.out.println("it " + p.getName() + " (" + p.getColor().getValue() + ") " + " turn ");
     }
     private int capturedCoordinate(int pawnCo, int moveCo){
