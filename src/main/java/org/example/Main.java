@@ -1,10 +1,7 @@
 package org.example;
 
 import org.example.enums.PawnColor;
-import org.example.game.Board;
-import org.example.game.GameBrain;
-import org.example.game.GameMenu;
-import org.example.game.Player;
+import org.example.game.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,6 +9,7 @@ public class Main {
         Player p2 = new Player("p2", PawnColor.BLACK);
         Board board = new Board();
         GameBrain gameBrain = new GameBrain(board, p1, p2);
+        ComputerMove computerMove = new ComputerMove(board, p1, p2);
         GameMenu gameMenu = new GameMenu(p1, p2);
         while(true){
             gameBrain.printTurn();
@@ -21,7 +19,7 @@ public class Main {
                 gameBrain.makeMove();
             }
             else if (choice == 2) {
-                // AI
+                computerMove.makeMove();
             }
             else if(choice == 3) {
                 // draw

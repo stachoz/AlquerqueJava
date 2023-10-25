@@ -6,13 +6,13 @@ import org.example.utils.ScannerUtil;
 import org.example.validators.MoveValidator;
 
 public class GameBrain {
-    private final Board board;
+    protected static Board board;
     private final Player p1;
     private final Player p2;
     private final MoveValidator moveValidator;
-    private int moveCounter = 0;
+    static private int moveCounter = 0;
     private boolean hasCaptured = false;
-    private final PawnsAbleToCapture pawnsAbleToCapture;
+    protected final PawnsAbleToCapture pawnsAbleToCapture;
 
 
     public GameBrain(Board board, Player p1, Player p2){
@@ -20,7 +20,7 @@ public class GameBrain {
         this.p1 = p1;
         this.p2 = p2;
         this.moveValidator = new MoveValidator(board);
-        this.pawnsAbleToCapture = new PawnsAbleToCapture((board.getLength() + 1) / 2);
+        this.pawnsAbleToCapture = new PawnsAbleToCapture();
     }
 
     public void makeMove(){
@@ -38,12 +38,10 @@ public class GameBrain {
                 do {
                     pawnY = getY();
                     pawnX = getX();
-                    convertedX = convertToOnlyPawnsCoordinates(pawnX);
-                    convertedY = convertToOnlyPawnsCoordinates(pawnY);
-                } while (!pawnsAbleToCapture.isPawnAbleToCapture(convertedX, convertedY));
+                } while (!pawnsAbleToCapture.isPawnAbleToCapture(new Pawn(pawnX, pawnY)));
                 board.takeOffPawn(pawnX, pawnY);
                 board.printBoard();
-                pawnsAbleToCapture.resetBoard();
+                pawnsAbleToCapture.reset();
             }
         }
         // It is looking for pawns which could make a capture in the next turn.
@@ -153,21 +151,15 @@ public class GameBrain {
         }
         return false;
     }
-    private void findPawnsAbleToCapture(char currentColor){
-        pawnsAbleToCapture.resetBoard();
+    protected void findPawnsAbleToCapture(char currentColor){
+        pawnsAbleToCapture.reset();
         int size = board.getSize();
         for(int i = 0; i <= size; i+=2){
             for(int j = 0; j <= size; j+=2){
                 if(board.getBoardElement(i, j) == currentColor && canPawnMove(i, j, currentColor, BoardDistance.CAPTURE)){
-                    int x = convertToOnlyPawnsCoordinates(i);
-                    int y = convertToOnlyPawnsCoordinates(j);
-                    pawnsAbleToCapture.setPawnAbleToCapture(true, x, y);
+                    pawnsAbleToCapture.addPawn(new Pawn(i, j));
                 }
             }
         }
-    }
-
-    private int convertToOnlyPawnsCoordinates(int co){
-        return co / 2;
     }
 }
