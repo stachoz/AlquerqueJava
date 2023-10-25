@@ -20,6 +20,10 @@ public class PawnsAbleToCapture {
         return false;
     }
 
+    public Pawn getPawn(int index) {
+        return pawns.get(index);
+    }
+
     public void reset() {
         pawns = new ArrayList<>();
     }
@@ -38,5 +42,9 @@ public class PawnsAbleToCapture {
                 break;
             }
         }
+    }
+
+    public int getLength() {
+        return pawns.toArray().length;
     }
 }
