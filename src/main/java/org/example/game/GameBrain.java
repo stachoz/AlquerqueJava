@@ -5,20 +5,18 @@ import org.example.enums.PawnColor;
 import org.example.utils.ScannerUtil;
 import org.example.validators.MoveValidator;
 
-import javax.sound.midi.Soundbank;
-
 public class GameBrain {
     protected static Board board;
     private final Player p1;
     private final Player p2;
-    private final MoveValidator moveValidator;
+    protected MoveValidator moveValidator;
     static private int moveCounter = 0;
     private boolean hasCaptured = false;
     protected final PawnsAbleToCapture pawnsAbleToCapture;
 
 
-    public GameBrain(Board board, Player p1, Player p2){
-        this.board = board;
+    public GameBrain(Board board ,Player p1, Player p2){
+        GameBrain.board = board;
         this.p1 = p1;
         this.p2 = p2;
         this.moveValidator = new MoveValidator(board);
@@ -118,11 +116,11 @@ public class GameBrain {
             else System.out.println("bad letter");
         }
     }
-    private Player getCurrentTurnPlayer(){
+    protected Player getCurrentTurnPlayer(){
         return moveCounter % 2 == 0 ? p1 : p2;
     }
 
-    private char enemyColor(char currentColor) {
+    protected char enemyColor(char currentColor) {
         return (currentColor == PawnColor.BLACK.getValue() ? PawnColor.WHITE.getValue() : PawnColor.BLACK.getValue());
     }
     private boolean detectMoveByDistance(int x1, int y1, int x2, int y2, BoardDistance expectedDistance){
@@ -135,7 +133,7 @@ public class GameBrain {
         Player p = getCurrentTurnPlayer();
         System.out.println("it " + p.getName() + " (" + p.getColor().getValue() + ") " + " turn ");
     }
-    private int capturedCoordinate(int pawnCo, int moveCo){
+    protected int capturedCoordinate(int pawnCo, int moveCo){
         return pawnCo + ((moveCo - pawnCo) / 2);
     }
     private boolean canPawnMove(int x, int y, char currentColor, BoardDistance boardDistanceMoveType){
@@ -151,7 +149,9 @@ public class GameBrain {
                     int capturedX = capturedCoordinate(x, moveX);
                     int capturedY = capturedCoordinate(y, moveY);
                     char enemyColor = enemyColor(currentColor);
-                    if(moveValidator.isThisCapturePossible(x, y, capturedX, capturedY, moveX, moveY,enemyColor, PawnColor.EMPTY.getValue())) return true;
+                    if(moveValidator.isThisCapturePossible(x, y, capturedX, capturedY, moveX, moveY,enemyColor, PawnColor.EMPTY.getValue())){
+                        return true;
+                    }
                 }
             }
         }

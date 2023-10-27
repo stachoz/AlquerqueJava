@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1be34b76-60c5-4ec2-b91e-d773dbca8a3c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/game/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/game/ComputerMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/game/ComputerMove.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/game/PawnsAbleToCapture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/game/PawnsAbleToCapture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/game/GameBrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/game/GameBrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/game/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/game/Pawn.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +32,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2WFSO83Qi7uHCxUoSnV9LlWnidw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -45,7 +51,15 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/stasi/IdeaProjects/Projects/AlquerqueGame/src/main/java/org/example&quot;
+    &quot;git-widget-placeholder&quot;: &quot;ComputerMove&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/stasi/IdeaProjects/Projects/AlquerqueGame/src/main/java/org/example&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -184,7 +198,13 @@
       <workItem from="1698053888472" duration="2188000" />
       <workItem from="1698088364471" duration="6134000" />
       <workItem from="1698135581271" duration="5000" />
-      <workItem from="1698241205250" duration="9779000" />
+      <workItem from="1698241205250" duration="10524000" />
+      <workItem from="1698312155508" duration="2023000" />
+      <workItem from="1698332333309" duration="253000" />
+      <workItem from="1698332771344" duration="53000" />
+      <workItem from="1698332867563" duration="159000" />
+      <workItem from="1698333056456" duration="2012000" />
+      <workItem from="1698401058947" duration="4936000" />
     </task>
     <servers />
   </component>
