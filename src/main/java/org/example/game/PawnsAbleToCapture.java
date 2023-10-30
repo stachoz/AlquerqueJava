@@ -6,7 +6,7 @@ import java.util.List;
 public class PawnsAbleToCapture {
     private List<Pawn> pawns = new ArrayList<>();
     public boolean hasAnyPawn(){
-        return pawns.size() != 0 ? true : false;
+        return !pawns.isEmpty();
     }
 
     public void addPawn(Pawn p){
