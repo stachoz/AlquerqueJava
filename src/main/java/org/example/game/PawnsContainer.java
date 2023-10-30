@@ -3,7 +3,7 @@ package org.example.game;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PawnsAbleToCapture {
+public class PawnsContainer {
     private List<Pawn> pawns = new ArrayList<>();
     public boolean hasAnyPawn(){
         return !pawns.isEmpty();
@@ -13,7 +13,7 @@ public class PawnsAbleToCapture {
         pawns.add(p);
     }
 
-    public boolean isPawnAbleToCapture(int x, int y){
+    public boolean contains(int x, int y){
         for(Pawn p : pawns){
             if(p.getX() == x && p.getY() == y) return true;
         }
@@ -44,7 +44,7 @@ public class PawnsAbleToCapture {
         }
     }
 
-    public int getLength() {
-        return pawns.toArray().length;
+    public List<Pawn> getAllPawns(){
+        return pawns;
     }
 }

@@ -1,6 +1,5 @@
 package org.example.game;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +11,11 @@ public class Pawn {
     public Pawn(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Pawn(Coordinates co){
+        this.x = co.getX();
+        this.y = co.getY();
     }
 
     public int getX() {
@@ -34,8 +38,8 @@ public class Pawn {
         possibleCaptures.add(new Coordinates(x, y));
     }
 
-    public int getLengthOfPossibleCaptures(){
-        return possibleCaptures.toArray().length;
+    public int capturedSize(){
+        return possibleCaptures.size();
     }
 
     public Coordinates getPossibleCapture(int index){

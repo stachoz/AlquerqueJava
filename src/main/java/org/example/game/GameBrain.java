@@ -12,7 +12,7 @@ public class GameBrain {
     protected MoveValidator moveValidator;
     static private int moveCounter = 0;
     private boolean hasCaptured = false;
-    protected final PawnsAbleToCapture pawnsAbleToCapture;
+    protected final PawnsContainer pawnsAbleToCapture;
 
 
     public GameBrain(Board board ,Player p1, Player p2){
@@ -20,7 +20,7 @@ public class GameBrain {
         this.p1 = p1;
         this.p2 = p2;
         this.moveValidator = new MoveValidator(board);
-        this.pawnsAbleToCapture = new PawnsAbleToCapture();
+        this.pawnsAbleToCapture = new PawnsContainer();
     }
 
     public void makeMove(){
@@ -39,7 +39,7 @@ public class GameBrain {
         moveCounter++;
     }
 
-    private Coordinates getPawnToMoveCoordinates(char currentColor){
+    protected Coordinates getPawnToMoveCoordinates(char currentColor){
         System.out.println("enter pawn's coordinates which you want to move");
         int pawnX, pawnY;
         while(true){
@@ -51,12 +51,12 @@ public class GameBrain {
         return new Coordinates(pawnX, pawnY);
     }
 
-    private Coordinates getMoveCoordinates(){
+   protected Coordinates getMoveCoordinates(){
         System.out.println("enter coordinates where you want to move");
         int moveY = getY();
         int moveX = getX();
         return new Coordinates(moveX, moveY);
-    }
+   }
 
     private void takeOverPawn(char enemyColor){
         if(!hasCaptured && pawnsAbleToCapture.hasAnyPawn()){
@@ -70,7 +70,7 @@ public class GameBrain {
                 do {
                     pawnY = getY();
                     pawnX = getX();
-                } while (!pawnsAbleToCapture.isPawnAbleToCapture(pawnX, pawnY));
+                } while (!pawnsAbleToCapture.contains(pawnX, pawnY));
                 board.takeOffPawn(pawnX, pawnY);
                 board.printBoard();
                 pawnsAbleToCapture.reset();
@@ -85,7 +85,7 @@ public class GameBrain {
         int moveY = moveCo.getY();
         if(detectMoveByDistance(pawnX, pawnY, moveX, moveY, BoardDistance.MOVE) && moveValidator.isThisMovePossible(pawnX, pawnY, moveX, moveY, PawnColor.EMPTY.getValue())){
             board.movePawn(pawnX, pawnY, moveX, moveY);
-            if(pawnsAbleToCapture.isPawnAbleToCapture(pawnX, pawnY)){
+            if(pawnsAbleToCapture.contains(pawnX, pawnY)){
                 pawnsAbleToCapture.updatePawn(pawnX, pawnY, moveX, moveY);
             }
             hasCaptured = false;
@@ -102,7 +102,7 @@ public class GameBrain {
         boolean multiCapture = false;
         boolean isMultiCaptureValidated = false;
         do {
-            if (isMultiCaptureValidated || canPawnCapture(pawnCo, moveCo, enemyColor)) {
+            if (isMultiCaptureValidated || isCapturePossible(pawnCo, moveCo, enemyColor)) {
                 int capturedX = capturedCoordinate(pawnX, moveX);
                 int capturedY = capturedCoordinate(pawnY, moveY);
                 board.capture(pawnX, pawnY, capturedX, capturedY, moveX, moveY);
@@ -120,7 +120,7 @@ public class GameBrain {
                     Coordinates nextCaptureCo;
                     while(true){
                         nextCaptureCo = getMoveCoordinates();
-                        if(canPawnCapture(new Coordinates(pawnX, pawnY), nextCaptureCo, enemyColor)) {
+                        if(isCapturePossible(new Coordinates(pawnX, pawnY), nextCaptureCo, enemyColor)) {
                             moveX = nextCaptureCo.getX();
                             moveY = nextCaptureCo.getY();
                             isMultiCaptureValidated = true;
@@ -134,7 +134,7 @@ public class GameBrain {
         return hasCaptured;
     }
 
-    private boolean canPawnCapture(Coordinates pawnCo, Coordinates moveCo, char enemyColor){
+    private boolean isCapturePossible(Coordinates pawnCo, Coordinates moveCo, char enemyColor){
         int pawnX = pawnCo.getX();
         int pawnY = pawnCo.getY();
         int moveX = moveCo.getX();
@@ -169,7 +169,6 @@ public class GameBrain {
     protected Player getCurrentTurnPlayer(){
         return moveCounter % 2 == 0 ? p1 : p2;
     }
-
     protected char enemyColor(char currentColor) {
         return (currentColor == PawnColor.BLACK.getValue() ? PawnColor.WHITE.getValue() : PawnColor.BLACK.getValue());
     }
@@ -186,7 +185,7 @@ public class GameBrain {
     protected int capturedCoordinate(int pawnCo, int moveCo){
         return pawnCo + ((moveCo - pawnCo) / 2);
     }
-    private boolean canPawnMove(int x, int y, char currentColor, BoardDistance boardDistanceMoveType){
+    protected boolean canPawnMove(int x, int y, char currentColor, BoardDistance boardDistanceMoveType){
         int distance = boardDistanceMoveType.getValue();
         int[] directions = {-distance, 0, distance};
         for(int directionX : directions){
