@@ -10,7 +10,7 @@ public class GameBrain {
     private final Player p1;
     private final Player p2;
     protected MoveValidator moveValidator;
-    static private int moveCounter = 0;
+    static protected int moveCounter = 0;
     private boolean hasCaptured = false;
     protected final PawnsContainer pawnsAbleToCapture;
 

@@ -47,4 +47,8 @@ public class PawnsContainer {
     public List<Pawn> getAllPawns(){
         return pawns;
     }
+
+    public int getSize(){
+        return pawns.size();
+    }
 }

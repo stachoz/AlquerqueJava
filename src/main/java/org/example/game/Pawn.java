@@ -6,8 +6,8 @@ import java.util.List;
 public class Pawn {
     private int x;
     private int y;
-    private List<Coordinates> possibleCaptures = new ArrayList<>();
-
+    private final List<Coordinates> possibleCaptures = new ArrayList<>();
+    private final List<Coordinates> possibleMoves = new ArrayList<>();
     public Pawn(int x, int y) {
         this.x = x;
         this.y = y;
@@ -37,12 +37,24 @@ public class Pawn {
     public void addPossibleCapture(int x, int y){
         possibleCaptures.add(new Coordinates(x, y));
     }
+    public void addPossibleMove(int x, int y) {
+        possibleMoves.add(new Coordinates(x, y));
+    }
 
     public int capturedSize(){
         return possibleCaptures.size();
     }
 
+    public int movesSize(){
+        return possibleMoves.size();
+    }
+
     public Coordinates getPossibleCapture(int index){
         return possibleCaptures.get(index);
     }
+
+    public Coordinates getPossibleMove(int index){
+        return possibleMoves.get(index);
+    }
+
 }
