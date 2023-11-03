@@ -3,16 +3,20 @@ package org.example.game;
 import org.example.enums.PawnColor;
 
 public class Player {
-    private final String name;
-    private PawnColor color;
 
-    public Player(String name, PawnColor color) {
-        this.name = name;
+    private String name;
+    private final PawnColor color;
+
+    public Player(PawnColor color) {
         this.color = color;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public PawnColor getColor() {

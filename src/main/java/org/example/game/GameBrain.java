@@ -266,4 +266,19 @@ public class GameBrain {
         }
         else if(blackPawns == 0) System.out.printf(p1.getName() + " WON!");
     }
+
+    public void setPlayersNickname() {
+        System.out.println("Enter first nick (white pawns): ");
+        String nick1 = ScannerUtil.getWord();
+        p1.setName(nick1);
+        System.out.println("Enter second nick (black pawns): ");
+        while(true){
+            String nick2 = ScannerUtil.getWord();
+            if(nick1.equals(nick2)) System.out.println("Nicknames must be different");
+            else {
+                p2.setName(nick2);
+                break;
+            }
+        }
+    }
 }
