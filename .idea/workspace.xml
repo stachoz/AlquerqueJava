@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1be34b76-60c5-4ec2-b91e-d773dbca8a3c" name="Changes" comment="" />
+    <list default="true" id="1be34b76-60c5-4ec2-b91e-d773dbca8a3c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/game/GameBrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/game/GameBrain.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,7 +57,7 @@
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "test",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/stasi/IdeaProjects/Projects/AlquerqueGame/src/main/java/org/example",
     "node.js.detected.package.eslint": "true",
@@ -211,7 +215,7 @@
       <workItem from="1698598551742" duration="19469000" />
       <workItem from="1698740567564" duration="612000" />
       <workItem from="1698772900062" duration="6386000" />
-      <workItem from="1698951683917" duration="767000" />
+      <workItem from="1698951683917" duration="2764000" />
     </task>
     <servers />
   </component>

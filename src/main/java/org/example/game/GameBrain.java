@@ -169,6 +169,11 @@ public class GameBrain {
     protected Player getCurrentTurnPlayer(){
         return moveCounter % 2 == 0 ? p1 : p2;
     }
+
+    private Player getEnemyPlayer(){
+        return moveCounter % 2 != 0 ? p1 : p2;
+    }
+
     protected char enemyColor(char currentColor) {
         return (currentColor == PawnColor.BLACK.getValue() ? PawnColor.WHITE.getValue() : PawnColor.BLACK.getValue());
     }
@@ -216,5 +221,30 @@ public class GameBrain {
                 }
             }
         }
+    }
+    public boolean draw(){
+        String currentPlayerNick = getCurrentTurnPlayer().getName();
+        System.out.println(currentPlayerNick + " want a draw. (y/n) type 'y' to accept");
+        String enemyPlayer = getEnemyPlayer().getName();
+        System.out.println(enemyPlayer + " answer: ");
+        char answer = ScannerUtil.getChar();
+        if(answer != 'y'){
+            System.out.println("draw proposal was rejected");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean surrender(){
+        String currentPlayerNick = getCurrentTurnPlayer().getName();
+        String enemyPlayer = getEnemyPlayer().getName();
+        System.out.println("Do you want to surrender and loose game? (y/n)");
+        char answer = ScannerUtil.getChar();
+        if(answer == 'y'){
+            System.out.println(currentPlayerNick + " has surrendered!");
+            System.out.println(enemyPlayer + " won!");
+            return true;
+        }
+        return false;
     }
 }

@@ -11,10 +11,10 @@ public class Main {
         GameBrain gameBrain = new GameBrain(board, p1, p2);
         ComputerMove computerMove = new ComputerMove(board, p1, p2);
         GameMenu gameMenu = new GameMenu(p1, p2);
+        board.printBoard();
         while(true){
             gameBrain.printTurn();
             int choice = gameMenu.moveMenu();
-            board.printBoard();
             if(choice == 1) {
                 gameBrain.makeMove();
             }
@@ -22,10 +22,12 @@ public class Main {
                 computerMove.makeMove();
             }
             else if(choice == 3) {
-                // draw
+                if(gameBrain.draw()) break;
+                continue;
             }
             else if(choice == 4){
-                // surrender
+                if(gameBrain.surrender()) break;
+                continue;
             }
             board.printBoard();
         }
