@@ -29,6 +29,10 @@ public class Main {
                 if(gameBrain.surrender()) break;
                 continue;
             }
+            if(computerMove.isGameEnd()) {
+                gameBrain.endGame();
+                break;
+            }
             board.printBoard();
         }
     }

@@ -10,10 +10,11 @@ public class GameBrain {
     private final Player p1;
     private final Player p2;
     protected MoveValidator moveValidator;
-    static protected int moveCounter = 0;
+    protected static int moveCounter = 0;
+    protected static int blackPawns = 12;
+    protected static int whitePawns = 12;
     private boolean hasCaptured = false;
     protected final PawnsContainer pawnsAbleToCapture;
-
 
     public GameBrain(Board board ,Player p1, Player p2){
         GameBrain.board = board;
@@ -73,6 +74,7 @@ public class GameBrain {
                 } while (!pawnsAbleToCapture.contains(pawnX, pawnY));
                 board.takeOffPawn(pawnX, pawnY);
                 board.printBoard();
+                decreasePawnNum(enemyColor);
                 pawnsAbleToCapture.reset();
             }
         }
@@ -106,6 +108,7 @@ public class GameBrain {
                 int capturedX = capturedCoordinate(pawnX, moveX);
                 int capturedY = capturedCoordinate(pawnY, moveY);
                 board.capture(pawnX, pawnY, capturedX, capturedY, moveX, moveY);
+                decreasePawnNum(enemyColor);
                 board.printBoard();
                 hasCaptured = true;
                 multiCapture = false;
@@ -246,5 +249,21 @@ public class GameBrain {
             return true;
         }
         return false;
+    }
+
+    protected void decreasePawnNum(char color){
+        if(color == PawnColor.WHITE.getValue()) whitePawns--;
+        else blackPawns--;
+    }
+
+    public boolean isGameEnd(){
+        return whitePawns == 0 || blackPawns == 0;
+    }
+
+    public void endGame(){
+        if(whitePawns == 0){
+            System.out.println(p2.getName() + " WON!");
+        }
+        else if(blackPawns == 0) System.out.printf(p1.getName() + " WON!");
     }
 }

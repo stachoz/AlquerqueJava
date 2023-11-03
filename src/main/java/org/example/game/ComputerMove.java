@@ -28,8 +28,9 @@ public class ComputerMove extends GameBrain{
                 int capturedX = capturedCoordinate(pawnX, moveX);
                 int capturedY = capturedCoordinate(pawnY, moveY);
                 board.capture(pawnX, pawnY, capturedX, capturedY, moveX, moveY);
+                decreasePawnNum(enemyColor(currentColor));
                 board.printBoard();
-                System.out.printf("Computer capture (" + pawnX + "," + pawnY + ") ==> (" + moveX + "," + moveY + ")");
+                System.out.println("Computer capture (" + pawnX + "," + pawnY + ") ==> (" + moveX + "," + moveY + ")");
                 pawnToMoveCo = moveCo;
             } while(canPawnMove(pawnToMoveCo.getX(), pawnToMoveCo.getY(), currentColor, BoardDistance.CAPTURE));
         } else {
