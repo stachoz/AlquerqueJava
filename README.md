@@ -12,7 +12,7 @@ their behalf. Logic of computer move is as follows:
 1. Computer is looking for pawns which can capture, randomly select one of them and capture as more enemy pawns as it is possible.
 2. If no capturing moves are possible, the computer makes random pawn using any available pawn.
 
-### Classes witch contains main logic:
+### Classes containg main logic:
 
 - GameBrain - contains mechanisms of moving, capturing and taking off pawns. 
 - ComputerMove - subclass of GameBrain. Make move automatically if player wants to.
